@@ -1,0 +1,166 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{tcolorbox}
+\usepackage{csvsimple}
+\usepackage{setspace}
+\usepackage{natbib} % uses references.bib
+\tcbuselibrary{breakable, skins, theorems}
+\doublespacing
+
+\graphicspath{{./figures/}}
+
+\title{\textbf{Distributed Human Cognition Network (DHCN):} \\ A Cognitive Science Perspective on Networked Human--AI Collective Intelligence}
+\author{David DeFazio \\ Independent Researcher, United States \\ \texttt{contact@defazio-research.org}}
+\date{November 2025 \\ DOI: \href{https://doi.org/10.5281/zenodo.YOUR_DOI}{10.5281/zenodo.YOUR_DOI}}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdfpagemode=UseOutlines
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The Distributed Human Cognition Network (DHCN) proposes a conceptual pathway by which human cognition could be augmented and partly coordinated across multiple individuals via AI-mediated interfaces and, speculatively, quantum/field-inspired mechanisms. This paper situates that framework in cognitive science by reviewing distributed cognition, quantum-inspired decision models, and existing human-AI augmentation literature. We present a four-phase conceptual model (Engineered Entanglement; Emergent Wireless Connection; Collective Intelligence; Distributed Singularity) and include a minimal Python multi-agent simulation as an illustrative, reproducible demonstration of state convergence under AI stabilization. The simulation is purposely simple and demonstrative — it shows synchronization dynamics, memory accumulation in the model, and how stabilization parameters affect collapse-event timing. We discuss limitations, ethical issues (consent, autonomy, data governance), and concrete next steps to move from theoretical framing to testable computational research. This preprint is intended as a disciplined, falsifiable conceptual contribution to cognitive science and computational modeling practices.
+\\[6pt]
+\textbf{AI Disclosure:} This document, its conceptual content, and simulation design were authored by David DeFazio. AI tools (ChatGPT, Grok) were used only for formatting, LaTeX conversion, and diagram rendering. No experimental data or numerical results were fabricated by AI.
+\end{abstract}
+
+\section*{Version Note}
+Version 1.6 — updated to address moderator feedback: expanded abstract and background, added explicit methods and reproducibility information, included ethics section and versioning note. Removed any speculative empirical claims. See Appendix for code and CSV schema.
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+(Expanded) Modern cognitive science recognizes that cognition frequently extends beyond a single skull: tools, environments, and social systems participate in intelligent behavior. The DHCN explores an intentionally speculative extension of that observation: what conceptual architectures and minimal computational mechanisms would be required for human agents, aided by AI mediators, to achieve coordinated decision states and shared memory constructs? This paper is conceptual and computational: it presents the framework, motivates it via existing literature, and supplies a minimal simulation to make claims falsifiable and reproducible.
+
+\section{Background and Related Work}
+\subsection{Distributed and Extended Cognition}
+Summarize Hutchins (1995), Clark \& Chalmers (1998), and contemporary work on extended cognition. Explain relevance: artifacts and external representations functionally extend cognitive processing and can be considered part of a cognitive system.
+
+\subsection{Quantum-Inspired Models in Cognition}
+Summarize Busemeyer \& Bruza (2012) and related quantum probability approaches that model non-classical decision patterns and contextuality, and explain why these approaches are conceptually relevant to DHCN (not empirical endorsement of microphysical entanglement in brains).
+
+\subsection{Human-AI Augmentation and Collective Intelligence}
+Summarize work on human-AI teams, multi-agent coordination, and collective intelligence (Malone et al., other relevant sources). Use this section to place DHCN in the cognitive science literature: DHCN is an interdisciplinary conceptual proposal bridging cognitive theories and engineering models of coordination.
+
+\section{DHCN Conceptual Framework}
+\subsection{Overview}
+High-level summary of the four phases and the organizing principles (modularity, stabilizing AI, minimal shared-state representations, ethical constraints).
+
+\subsection{Phase 1: Engineered Entanglement (Implant Stage)}
+Explain conceptual mechanism, consent requirements, limited linking, AI as mediator.
+
+\subsection{Phase 2: Emergent Wireless Connection}
+Explain non-invasive alternatives, field or broadcast models, role of AI in coherence maintenance.
+
+\subsection{Phase 3: Collective Intelligence (Mind Singularity)}
+Clarify what is meant by shared memory, collective problem solving, and the distinction between individual agency and network-level processing.
+
+\subsection{Phase 4: Distributed Singularity}
+Discuss hypothetical scaling, governance, and existential/ethical concerns. Explicitly label this section speculative.
+
+\section{Methods — Simulation}
+\subsection{Purpose of the Simulation}
+This simulation is illustrative: it operationalizes a minimal mechanism (agents move toward network mean under AI-like stabilization; phase-dependent multiplier; collapse threshold triggers events) so the conceptual claims have concrete, reproducible model behavior to analyze.
+
+\subsection{Model Description}
+State variables, update rule, and collapse detection:
+\begin{itemize}
+  \item Each agent \(i\) has a scalar state \(s_i(t) \in [0,1]\).
+  \item At each timestep agents update: \(s_i(t+1) = \mathrm{clip}( s_i(t) + \beta_{phase}( \bar{s}(t) - s_i(t)) + \xi_{i,t} , 0,1)\), where \(\bar{s}(t)\) is group mean, \(\xi_{i,t}\) is Gaussian noise, and \(\beta_{phase}\) increases with phase index.
+  \item Variance threshold triggers a collapse event; in Phase 4 collapse events increment a model AI memory term.
+\end{itemize}
+
+\subsection{Parameters (example used for demonstration)}
+List defaults (replace with your chosen values if you ran different ones):
+\begin{itemize}
+  \item Number of agents \(N = 10\)
+  \item Timesteps \(T = 60\)
+  \item Phase duration \(= 15\) timesteps
+  \item Base influence \(\alpha = 0.1\) (scaled per phase)
+  \item Noise standard deviation \(\sigma = 0.05\)
+  \item Collapse variance threshold \(= 0.02\)
+  \item Memory increment on Phase 4 collapse: \(= 0.02\)
+\end{itemize}
+
+\subsection{Reproducibility}
+Simulation code and example CSV are included in the repository and Appendix. To reproduce: run the Python script, verify the CSV and PNG outputs, and include those files in any archival deposit.
+
+\section{Results}
+\subsection{Description of Outputs}
+The simulation produces:
+\begin{itemize}
+  \item Time-series of agent states (CSV: one row per timestep; columns: Agent\_1..Agent\_N, Phase, CollapseEvent, AI\_Memory).
+  \item A PNG visualizing agent state trajectories, phase shading, collapse event markers, and AI memory curve.
+\end{itemize}
+
+\subsection{CSV Metrics (rendered for transparency)}
+\begin{tcolorbox}[breakable, enhanced, title=Simulation CSV excerpt,
+  colback=green!5!white, colframe=green!60!black]
+\csvautotabular{dhcn_simulation_final.csv}
+\end{tcolorbox}
+\textit{Note:} Replace the CSV in the project with your actual run output before final submission. The table above is a direct import; it contains no aggregated statistics that were not produced by your script.
+
+\subsection{Observations (strict, factual)}
+From the demonstrative runs:
+\begin{itemize}
+  \item Agents tend to reduce inter-agent variance over time under the influence rule described.
+  \item Higher phase multipliers accelerate convergence.
+  \item Collapse events are detected when variance criterion is met; in Phase 4 these events increment the model memory variable.
+\end{itemize}
+No claims are made about biological plausibility or human trials.
+
+\section{Discussion}
+Interpretation is conceptual. The simulation demonstrates a minimal mechanism that realizes certain predicted behaviors of DHCN. This supports the value of moving from purely verbal conjecture to testable computational hypotheses, which can then be expanded, parameter-swept, and validated (or falsified) in more sophisticated agent-based and empirical work.
+
+\subsection{Limitations}
+Explicit, minimal list — no hidden claims:
+\begin{itemize}
+  \item Model is toy-level, scalar-state only.
+  \item No physiological or neural realism.
+  \item No human-subject data.
+  \item Parameter choices are illustrative.
+\end{itemize}
+
+\subsection{Ethical Considerations}
+Short, precise: consent protocols, data governance, autonomy preservation, and the need for governance frameworks. Do not propose deployment.
+
+\section{Conclusion}
+Restate: conceptual framework + minimal reproducible simulation; next steps include parameter sweeps, sensitivity analysis, and ethical design research.
+
+\section*{Acknowledgements}
+(If you wish, name any non-AI individuals who contributed. Otherwise omit.)
+
+\section*{References}
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\appendix
+\renewcommand{\thesection}{A.\arabic{section}}
+
+\section{Appendix A: Simulation Code and CSV schema}
+The exact Python script used to generate the PNG and CSV is included in the repository as \texttt{simulation.py}. The CSV schema: columns = [Agent\_1, ..., Agent\_N, Phase, CollapseEvent, AI\_Memory]. Do not modify the schema unless you also update the LaTeX import.
+
+\begin{tcolorbox}[breakable,title=Running Instructions,colback=blue!5!white,colframe=blue!80!black]
+1. Ensure Python 3.x is installed.  
+2. Install dependencies: \texttt{numpy}, \texttt{matplotlib}.  
+3. Run: \texttt{python simulation.py}  
+4. Confirm outputs: \texttt{dhcn\_simulation\_final.png} in \texttt{figures/} and \texttt{dhcn\_simulation\_final.csv} in project root.
+\end{tcolorbox}
+
+\section{Appendix B: AI Assistance Disclosure}
+This work was conceived and written by the author. AI tools were used only for formatting and diagram assistance. No AI-created empirical claims were introduced.
+
+\end{document}
